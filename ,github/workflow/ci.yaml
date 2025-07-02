@@ -1,0 +1,31 @@
+name: CI Workflow
+
+on:
+  push: # whenever i push the code, please do the following(jobs)
+    branches:
+      - main
+  pull_request: # whenever there is a pull request, do the following(jobs)
+    branches:
+      - main
+
+jobs:
+  test: # here you can gave alternate name as well
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2 # here it is not a variable naming.
+
+    - name: Set up Python
+      uses: actions/setup-python@v2 # install python 3.9
+      with:
+        python-version: '3.9' 
+
+    - name: Install dependencies # asking githubActions to install the following dependencies in it's server
+      run: |
+        python -m pip install --upgrade pip 
+        pip install pytest streamlit
+
+    - name: Run tests # run the following code
+      run: |
+        pytest _test.py
