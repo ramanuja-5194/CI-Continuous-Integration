@@ -14,10 +14,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2 # here it is not a variable naming.
+      uses: actions/checkout@v4 # here it is not a variable naming.
 
     - name: Set up Python
-      uses: actions/setup-python@v2 # install python 3.9
+      uses: actions/setup-python@v5 # install python 3.9
       with:
         python-version: '3.9' 
 
